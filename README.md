@@ -1,6 +1,6 @@
 # assembly_pipeline
 
-The script assembly_pipeline.py is a computational pipeline to perform _de novo_ assembly of bacterial genomes from Illumina paired-end reads. The pipeline is based on the assember [SPAdes](https://github.com/ablab/spades) and the [improve_assembly](https://github.com/sanger-pathogens/assembly_improvement) pipeline designed to polish the SPAdes assembly by scaffolding and gap filling.
+The script assembly_pipeline.py is a computational pipeline to perform _de novo_ assembly of bacterial genomes from Illumina paired-end reads. The pipeline is based on the assember [SPAdes](https://github.com/ablab/spades) and the [improve_assembly](https://github.com/sanger-pathogens/assembly_improvement) pipeline designed to improve the SPAdes assembly by scaffolding and gap filling.
 
 # Docker Installation
 
@@ -61,6 +61,12 @@ spades arguments (optional):
   -m IMPROVED_DIR, --improved_dir IMPROVED_DIR
                         directory to store improve_assembly resulting files
 ```
+
+## Usage using the Docker image
+```
+docker run --volume=/path/to/fastq/files/:/data francesccoll/assembly_pipeline:amd64 assembly_pipeline.py --forward_reads /data/sampleId_1.fastq.gz --reverse_reads /data/sampleId_2.fastq.gz --sample_id sampleId --spades_threads 8 --results_dir /data/sampleId/
+```
+> NOTE: --results_dir must be specified when running the Docker image for the output assembly files to be saved locally
 
 # License
 
